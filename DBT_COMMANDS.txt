@@ -12,5 +12,36 @@ git remove add origin https://github.com/SridharGithub17/DBT.git
 
 git remote --v  (checks if origin points to git rep)
 
+Macros:
+-------
+No of macros are combined into package-our most popular package is dbt-utils.
+
+DBT HUB PACKAGE: https://hub.getdbt.com/
+
+
+
+  - git: "https://github.com/SridharGithub17/DBT.git"
+    revision: 0.1.21
+
+  - local: /opt/dbt/redshift
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
