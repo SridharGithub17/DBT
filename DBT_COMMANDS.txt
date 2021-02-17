@@ -1,0 +1,16 @@
+DBT COMMANDS:
+-------------
+
+** Initiate a DBT PROJECT:
+DBT INIT PROJECT_NAME
+
+**Once the profile file is set up run the below command to see if connection is successfull or not:
+DBT DEBUG
+
+**To push the file changes to github:
+git remove add origin https://github.com/SridharGithub17/DBT.git
+
+git remote --v  (checks if origin points to git rep)
+
+
+
