@@ -26,9 +26,24 @@ DBT HUB PACKAGE: https://hub.getdbt.com/
   - local: /opt/dbt/redshift
 
 
+  PR BUILD URL:
+  https://github.com/SridharGithub17/DBT/compare/master..my-branch
 
 
-
+--------------------------
+Features tested:
+1. Project created with DBT cloud 
+	--> Connection setup
+	--> DBT rep set up
+	--> Integrating with github ** check it
+2. Running sample models
+3. Creating models to create models (materialized: view or table ) in snowflake
+4. creating sub models ( stg, int, dim , fct)
+5. creating models to load different models in same schema
+6. Load modesl to the respective schema --In progress
+7. Naming convetions:
+	https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md
+8. INSTALL PACKAGES
 
 
 
