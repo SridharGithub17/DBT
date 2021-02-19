@@ -18,6 +18,8 @@ No of macros are combined into package-our most popular package is dbt-utils.
 
 DBT HUB PACKAGE: https://hub.getdbt.com/
 
+To connect to existing repository:
+git remote add origin rep_link
 
 
   - git: "https://github.com/SridharGithub17/DBT.git"
@@ -44,6 +46,18 @@ Features tested:
 7. Naming convetions:
 	https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md
 8. INSTALL PACKAGES
+
+NOtes:
+Variables defined with the --vars command line argument override variables defined in the dbt_project.yml file. They are globally scoped and will be accessible to all packages included in the project.
+
+How to structure dbt projects:
+https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355
+
+Naming conventions:
+https://github.com/fishtown-analytics/corp/blob/master/dbt_coding_conventions.md
+
+To upgrade dbt:
+pip install --upgrade dbt
 
 
 
