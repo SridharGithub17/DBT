@@ -8,7 +8,7 @@ DBT INIT PROJECT_NAME
 DBT DEBUG
 
 **To push the file changes to github:
-git remove add origin https://github.com/SridharGithub17/DBT.git
+git remote add origin https://github.com/SridharGithub17/DBT.git
 
 git remote --v  (checks if origin points to git rep)
 
@@ -165,6 +165,54 @@ Done. PASS=8 WARN=0 ERROR=1 SKIP=0 TOTAL=9
 
 
 ####################################################################
+
+If you provide the --full-refresh argument to dbt run, dbt will treat incremental models as table models. This is useful when
+The schema of an incremental model changes and you need to recreate it
+You want to reprocess the entirety of the incremental model because of new logic in the model code.
+
+In the dbt compilation context, this flag will be available as flags.FULL_REFRESH. Further, the is_incremental() macro will return false for all models in response when the --full-refresh flag is specified.
+
+select * from all_events
+
+-- if the table already exists and `--full-refresh` is
+-- not set, then only add new records. otherwise, select
+-- all records.
+{% if is_incremental() %}
+   where collector_tstamp > (
+     select coalesce(max(max_tstamp), '0001-01-01') from {{ this }}
+   )
+{% endif %}
+
+
+Treat warnings as errors#
+In some cases, dbt will emit warnings rather than errors. These warnings are intended to alert you to potential issues with your dbt project, like the use of deprecated methods or configurations. To treat these warnings as errors (eg. in a CI environment) provide the --warn-error flag to your invocation of dbt.
+$ dbt --warn-error run
+Supply the -x or --fail-fast flag to dbt run to make dbt exit immediately if a single model fails to build.
+
+DBT run different scenarios:
+----------------------------
+$ dbt run --models my_dbt_project_name   # runs all models in your project
+$ dbt run --models my_dbt_model          # runs a specific model
+$ dbt run --models path.to.my.models     # runs all models in a specific directory
+$ dbt run --models my_package.some_model # run a specific model in a specific package
+$ dbt run --models tag:nightly           # run models with the "nightly" tag
+$ dbt run --models path/to/models        # run models contained in path/to/models
+$ dbt run --models path/to/my_model.sql  # run a specific model by its path
+# multiple arguments can be provided to --models
+$ dbt run --models my_first_model my_second_model
+# these arguments can be projects, models, directory paths, tags, or sources
+$ dbt run --models tag:nightly my_model finance.base.*
+# use methods and intersections for more complex selectors
+$ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
+
+Enable or Disable Colorized Logs:
+$ dbt --use-colors run
+$ dbt --no-use-colors run
+
+
+
+
+
 
 
 
