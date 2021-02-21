@@ -2,6 +2,7 @@ with source as (
     select * from {{  ref('orders')}}
 ),
 stg_orders as (
+  select
     order_id,
     customer_order_id,
     order_status,
@@ -11,5 +12,5 @@ stg_orders as (
     order_delivered_customer_date,
     order_estimated_delivery_date
   from source
-),
+)
 select * from stg_orders

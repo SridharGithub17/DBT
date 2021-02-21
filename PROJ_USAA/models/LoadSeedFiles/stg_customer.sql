@@ -8,6 +8,6 @@ stage_customer as (
     customer_city,
     customer_st
   from source
-),
+)
 select * from stage_customer
 

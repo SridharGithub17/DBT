@@ -28,6 +28,4 @@ final as (
       inner join customer on orders.customer_order_id = customer.customer_order_id
       inner join state_map on customer.customer_st = state_map.st
     )
-  select
-    *
-  from final
+  select    *   from final

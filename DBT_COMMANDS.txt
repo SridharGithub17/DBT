@@ -60,6 +60,120 @@ To upgrade dbt:
 pip install --upgrade dbt
 
 
+(base) C:\Users\Sridhar\Desktop\Project doc\PYTHON\GIT\DBT_CL_REP\PROJ_USAA>dbt debug
+Running with dbt=0.19.0
+dbt version: 0.19.0
+python version: 3.7.1
+python path: c:\users\sridhar\anaconda3\python.exe
+os info: Windows-7-6.1.7600-SP0
+Using profiles.yml file at C:\Users\Sridhar\.dbt\profiles.yml
+Using dbt_project.yml file at C:\Users\Sridhar\Desktop\Project doc\PYTHON\GIT\DBT_CL_REP\PROJ_USAA\dbt_project.yml
+
+Configuration:
+  profiles.yml file [OK found and valid]
+  dbt_project.yml file [OK found and valid]
+
+Required dependencies:
+ - git [OK found]
+
+Connection:
+  account: qe75019.us-east-2.aws
+  user: SidSnowflake
+  database: USAA
+  schema: STAGE
+  warehouse: COMPUTE_WH
+  role: SYSADMIN
+  client_session_keep_alive: False
+  Connection test: OK connection ok
+  
+
+(base) C:\Users\Sridhar\Desktop\Project doc\PYTHON\GIT\DBT_CL_REP\PROJ_USAA>dbt run
+Running with dbt=0.19.0
+[WARNING]: Test 'test.PROJ_USAA.accepted_values_stg+state_st__AC__AL__AP__AM__BA__CE__DF__ES__GO__MA__MT__MS__MG__PA__PB__PR__PE__PI__RJ__RN__RS__RO__RR__SC__SP__SE__TO' (models\LoadSeedFiles\schema.yml) depends on a node named 'stg+state' which was not found
+[WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.PROJ_USAA.staging
+
+Found 6 models, 9 tests, 0 snapshots, 0 analyses, 143 macros, 0 operations, 3 seed files, 3 sources, 0 exposures
+
+17:53:40 | Concurrency: 1 threads (target='dev')
+17:53:40 |
+17:53:40 | 1 of 6 START table model STAGE.my_first_dbt_model.................... [RUN]
+17:53:43 | 1 of 6 OK created table model STAGE.my_first_dbt_model............... [SUCCESS 1 in 2.28s]
+17:53:43 | 2 of 6 START view model STAGE.stg_customer........................... [RUN]
+17:53:45 | 2 of 6 OK created view model STAGE.stg_customer...................... [SUCCESS 1 in 1.98s]
+17:53:45 | 3 of 6 START view model STAGE.stg_orders............................. [RUN]
+17:53:46 | 3 of 6 OK created view model STAGE.stg_orders........................ [SUCCESS 1 in 1.52s]
+17:53:46 | 4 of 6 START view model STAGE.stg_state.............................. [RUN]
+17:53:48 | 4 of 6 OK created view model STAGE.stg_state......................... [SUCCESS 1 in 1.43s]
+17:53:48 | 5 of 6 START view model STAGE.my_second_dbt_model.................... [RUN]
+17:53:49 | 5 of 6 OK created view model STAGE.my_second_dbt_model............... [SUCCESS 1 in 1.48s]
+17:53:49 | 6 of 6 START table model STAGE.customer_orders....................... [RUN]
+17:53:52 | 6 of 6 OK created table model STAGE.customer_orders.................. [SUCCESS 1 in 2.60s]
+17:53:53 |
+17:53:53 | Finished running 2 table models, 4 view models in 16.68s.
+
+Completed successfully
+
+Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+  
+
+Completed successfully
+
+Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+
+(base) C:\Users\Sridhar\Desktop\Project doc\PYTHON\GIT\DBT_CL_REP\PROJ_USAA>dbt test
+Running with dbt=0.19.0
+[WARNING]: Test 'test.PROJ_USAA.accepted_values_stg+state_st__AC__AL__AP__AM__BA__CE__DF__ES__GO__MA__MT__MS__MG__PA__PB__PR__PE__PI__RJ__RN__RS__RO__RR__SC__SP__SE__TO' (models\LoadSeedFiles\schema.yml) depends on a node named 'stg+state' which was not found
+[WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.PROJ_USAA.staging
+
+Found 6 models, 9 tests, 0 snapshots, 0 analyses, 143 macros, 0 operations, 3 seed files, 3 sources, 0 exposures
+
+17:59:42 | Concurrency: 1 threads (target='dev')
+17:59:42 |
+17:59:42 | 1 of 9 START test accepted_values_customer_orders_order_status__1__0. [RUN]
+17:59:43 | 1 of 9 PASS accepted_values_customer_orders_order_status__1__0....... [PASS in 1.67s]
+17:59:43 | 2 of 9 START test not_null_customer_orders_customer_unique_id........ [RUN]
+17:59:45 | 2 of 9 PASS not_null_customer_orders_customer_unique_id.............. [PASS in 1.32s]
+17:59:45 | 3 of 9 START test not_null_my_first_dbt_model_id..................... [RUN]
+17:59:47 | 3 of 9 FAIL 1 not_null_my_first_dbt_model_id......................... [FAIL 1 in 1.84s]
+17:59:47 | 4 of 9 START test not_null_my_second_dbt_model_id.................... [RUN]
+17:59:48 | 4 of 9 PASS not_null_my_second_dbt_model_id.......................... [PASS in 1.41s]
+17:59:48 | 5 of 9 START test not_null_stg_customer_customer_unique_id........... [RUN]
+17:59:49 | 5 of 9 PASS not_null_stg_customer_customer_unique_id................. [PASS in 1.37s]
+17:59:49 | 6 of 9 START test not_null_stg_orders_customer_order_id.............. [RUN]
+17:59:51 | 6 of 9 PASS not_null_stg_orders_customer_order_id.................... [PASS in 1.83s]
+17:59:51 | 7 of 9 START test unique_my_first_dbt_model_id....................... [RUN]
+17:59:53 | 7 of 9 PASS unique_my_first_dbt_model_id............................. [PASS in 1.42s]
+17:59:53 | 8 of 9 START test unique_my_second_dbt_model_id...................... [RUN]
+17:59:54 | 8 of 9 PASS unique_my_second_dbt_model_id............................ [PASS in 1.71s]
+17:59:54 | 9 of 9 START test unique_stg_orders_customer_order_id................ [RUN]
+17:59:56 | 9 of 9 PASS unique_stg_orders_customer_order_id...................... [PASS in 1.65s]
+17:59:56 |
+17:59:56 | Finished running 9 tests in 15.66s.
+
+Completed with 1 error and 0 warnings:
+
+Failure in test not_null_my_first_dbt_model_id (models\example\schema.yml)
+  Got 1 result, expected 0.
+
+  compiled SQL at target\compiled\PROJ_USAA\models\example\schema.yml\schema_test\not_null_my_first_dbt_model_id.sql
+
+Done. PASS=8 WARN=0 ERROR=1 SKIP=0 TOTAL=9
+
+
+####################################################################
+
+
+
+  
+ 
+ 
+ 
+ 
+  
 
 
 

@@ -16,7 +16,7 @@ models:
                 - unique
                 - not_null
 
-    -  name:  stg_state
+    -  name:  stg+state
        description: "Holds state info"
        columns:
             - name: st

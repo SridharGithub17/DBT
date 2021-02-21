@@ -35,4 +35,9 @@ models:
   PROJ_USAA:
       # Applies to all files under models/example/
       example:
-          materialized: view
+          materialized: "view"
+      staging:
+          materialized: "table"
+      mart: 
+          materialized: "table"
+          schema: "mart"
